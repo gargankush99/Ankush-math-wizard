@@ -71,7 +71,7 @@ data = {
         ],
         "Medium": [
             {"q": "Evaluate $\int \tan x dx$.", "a": "log|sec x| + C", "sol": "Write as $\int \frac{\sin x}{\cos x} dx$ and use substitution $u = \cos x$."},
-            {"q": "Evaluate $\int \frac{dx}{x^2 - a^2}$.", "a": "1/2a log|(x-a)/(x+a)| + C", "sol": "Using partial fractions or standard formula."},
+            {"q": r"Evaluate $\int \frac{dx}{x^2 - a^2}$.", "a": "1/2a log|(x-a)/(x+a)| + C", r"sol": r"Using partial fractions: $\displaystyle \frac{1}{x^2-a^2} = \frac{1}{2a} \left[ \frac{1}{x-a} - \frac{1}{x+a} \right]$. Integrating gives $\displaystyle \frac{1}{2a} \log \left| \frac{x-a}{x+a} \right| + C$."},
             {"q": "Find $\int x e^x dx$.", "a": "(x-1)e^x + C", "sol": "Use Integration by Parts (ILATE rule): $u=x, v=e^x$."},
             {"q": "Evaluate $\int_0^{\pi/2} \cos x dx$.", "a": "1", "sol": "$[\sin x]_0^{\pi/2} = \sin(\pi/2) - \sin(0) = 1 - 0 = 1$."},
             {"q": "Integrate $\int \frac{1}{\sqrt{1-x^2}} dx$.", "a": "sin^-1 x + C", "sol": "Standard inverse trig integral."}
@@ -152,6 +152,7 @@ if 'current_questions' in st.session_state:
         else:
             st.balloons()
             st.success("Great job! You're mastering this topic.")
+
 
 
 
