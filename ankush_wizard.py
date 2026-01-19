@@ -61,7 +61,36 @@ data = {
     "Determinants": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
     "Continuity & Differentiability": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
     "Applications of Derivatives": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
-    "Integrals": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
+    "Integrals": {
+        "Easy": [
+            {"q": "Find $\int x^2 dx$.", "a": "x^3/3 + C", "sol": "Using $\int x^n dx = x^{n+1}/(n+1)$."},
+            {"q": "Evaluate $\int \sec^2 x dx$.", "a": "tan x + C", "sol": "Standard derivative of $\tan x$ is $\sec^2 x$."},
+            {"q": "Find $\int e^{2x} dx$.", "a": "(e^2x)/2 + C", "sol": "Using $\int e^{ax} dx = \frac{e^{ax}}{a} + C$."},
+            {"q": "Evaluate $\int \frac{1}{x} dx$.", "a": "log|x| + C", "sol": "Standard integral form."},
+            {"q": "Integrate $\int \sin(2x) dx$.", "a": "-cos(2x)/2 + C", "sol": "Integral of $\sin(ax)$ is $-\frac{\cos(ax)}{a}$."}
+        ],
+        "Medium": [
+            {"q": "Evaluate $\int \tan x dx$.", "a": "log|sec x| + C", "sol": "Write as $\int \frac{\sin x}{\cos x} dx$ and use substitution $u = \cos x$."},
+            {"q": "Evaluate $\int \frac{dx}{x^2 - a^2}$.", "a": "1/2a log|(x-a)/(x+a)| + C", "sol": "Using partial fractions or standard formula."},
+            {"q": "Find $\int x e^x dx$.", "a": "(x-1)e^x + C", "sol": "Use Integration by Parts (ILATE rule): $u=x, v=e^x$."},
+            {"q": "Evaluate $\int_0^{\pi/2} \cos x dx$.", "a": "1", "sol": "$[\sin x]_0^{\pi/2} = \sin(\pi/2) - \sin(0) = 1 - 0 = 1$."},
+            {"q": "Integrate $\int \frac{1}{\sqrt{1-x^2}} dx$.", "a": "sin^-1 x + C", "sol": "Standard inverse trig integral."}
+        ],
+        "Hard": [
+            {"q": "Evaluate $\int \frac{2x}{(x^2+1)(x^2+3)} dx$.", "a": "log|(x^2+1)/(x^2+3)| + C", "sol": "Substitute $u = x^2 \implies du = 2x dx$. Then use partial fractions."},
+            {"q": "Evaluate $\int e^x (\sin x + \cos x) dx$.", "a": "e^x sin x + C", "sol": "Use formula $\int e^x [f(x) + f'(x)] dx = e^x f(x) + C$."},
+            {"q": "Find $\int \sqrt{a^2 - x^2} dx$.", "a": "x/2 sqrt(a^2-x^2) + a^2/2 sin^-1(x/a) + C", "sol": "Use trigonometric substitution $x = a \sin \theta$."},
+            {"q": "Evaluate $\int_0^{\pi} \frac{x \sin x}{1 + \cos^2 x} dx$.", "a": "pi^2/4", "sol": "Use property $P_4$ ($\int f(a-x)$) to remove $x$, then substitute $u = \cos x$."},
+            {"q": "Integrate $\int \frac{dx}{\sin(x-a)\sin(x-b)}$.", "a": "1/sin(a-b) log|sin(x-a)/sin(x-b)| + C", "sol": "Multiply and divide by $\sin(a-b)$, then write numerator as $\sin((x-b)-(x-a))$."}
+        ],
+        "Expert": [
+            {"q": "Evaluate $\int \sqrt{\tan x} dx$.", "a": "Complex form", "sol": "Substitute $\tan x = t^2$, resulting in a rational function $\int \frac{2t^2}{t^4+1} dt$ which is solved by dividing by $t^2$."},
+            {"q": "Evaluate $\int_0^1 \frac{\log(1+x)}{1+x^2} dx$.", "a": "pi/8 log 2", "sol": "Substitute $x = \tan \theta$, then use properties of definite integrals."},
+            {"q": "Find the value of $\int_0^{\pi/2} \log(\sin x) dx$.", "a": "-pi/2 log 2", "sol": "Use property $\int f(a-x)$ and combine integrals to get $2I = \int \log(\sin 2x) - \log 2$."},
+            {"q": "Evaluate $\int \frac{x^2+1}{x^4+1} dx$.", "a": "1/sqrt(2) tan^-1((x^2-1)/(x sqrt(2))) + C", "sol": "Divide numerator and denominator by $x^2$, then substitute $u = x - 1/x$."},
+            {"q": "Find $\int \frac{dx}{(x+1)\sqrt{x^2-1}}$.", "a": "sqrt((x-1)/(x+1)) + C", "sol": "Substitute $x+1 = 1/t$."}
+        ]
+    },
     "Applications of Integrals": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
     "Differential Equations": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
     "Vector Algebra": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
@@ -123,5 +152,6 @@ if 'current_questions' in st.session_state:
         else:
             st.balloons()
             st.success("Great job! You're mastering this topic.")
+
 
 
