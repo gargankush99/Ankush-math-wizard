@@ -42,7 +42,6 @@ with st.sidebar:
     generate = st.button("✨ Generate 5 New Questions")
 
 if generate or 'current_questions' in st.session_state:
-    # --- Updated Logic to Fix the ValueError ---
 if generate:
     # 1. Get the pool for the selected chapter/level
     pool = data.get(chapter, {}).get(level, [])
@@ -90,4 +89,5 @@ if generate:
             st.balloons()
 
             st.success("Great job! You're mastering this topic.")
+
 
