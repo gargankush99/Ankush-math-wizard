@@ -18,23 +18,22 @@ st.subheader("Grade 12 CBSE Board Practice Portal (2026 Pattern)")
 
 # --- QUESTION DATABASE ---
 # You can expand this list with 100s of questions
+# Updated data dictionary with all Grade 12 CBSE Chapters
 data = {
-    "Relations & Functions": {
-        "Hard": [
-            {"q": "Let $A = \{1, 2, 3\}$. Find the number of equivalence relations containing $(1, 2)$.", "a": "2", "sol": "The smallest equivalence relation is $R_1 = \{(1,1), (2,2), (3,3), (1,2), (2,1)\}$. To keep it equivalence, we can add $(2,3), (3,2), (1,3), (3,1)$. This gives $R_2$ (the universal relation). Total = 2."},
-            {"q": "Check if $f: R \\rightarrow R$ defined by $f(x) = x^3$ is a bijection.", "a": "Yes", "sol": "1. **One-to-one:** $x_1^3 = x_2^3 \\implies x_1 = x_2$. 2. **Onto:** For every $y \in R$, there exists $x = \sqrt[3]{y} \in R$. Thus, it is a bijection."}
-        ],
-        "Easy": [
-            {"q": "If $n(A) = 3$, find the number of reflexive relations on A.", "a": "64", "sol": "Formula: $2^{n^2 - n}$. Here $2^{9-3} = 2^6 = 64$."}
-        ]
-    },
-    "Calculus": {
-        "Expert": [
-            {"q": "Evaluate $\int_{0}^{\pi/2} \\frac{\sqrt{\sin x}}{\sqrt{\sin x} + \sqrt{\cos x}} dx$.", "a": "pi/4", "sol": "Using property $\int_{0}^{a} f(x)dx = \int_{0}^{a} f(a-x)dx$, the integral $I$ becomes $\int \frac{\sqrt{\cos x}}{\sqrt{\cos x} + \sqrt{\sin x}}$. Adding both: $2I = \int_{0}^{\pi/2} 1 dx = [x]_{0}^{\pi/2} = \pi/2$. So $I = \pi/4$."}
-        ]
-    }
+    "Relations & Functions": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
+    "Inverse Trig Functions": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
+    "Matrices": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
+    "Determinants": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
+    "Continuity & Differentiability": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
+    "Applications of Derivatives": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
+    "Integrals": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
+    "Applications of Integrals": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
+    "Differential Equations": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
+    "Vector Algebra": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
+    "Three Dimensional Geometry": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
+    "Linear Programming": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
+    "Probability": {"Easy": [], "Medium": [], "Hard": [], "Expert": []}
 }
-
 # --- APP LOGIC ---
 with st.sidebar:
     st.header("Wizard's Controls")
@@ -76,4 +75,5 @@ if generate or 'current_questions' in st.session_state:
             st.warning(f"Wizard's Advice: You need to strengthen your fundamentals in **{chapter}**. Focus on NCERT Exemplar problems.")
         else:
             st.balloons()
+
             st.success("Great job! You're mastering this topic.")
