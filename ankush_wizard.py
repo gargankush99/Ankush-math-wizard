@@ -42,11 +42,24 @@ with st.sidebar:
     generate = st.button("✨ Generate 5 New Questions")
 
 if generate or 'current_questions' in st.session_state:
-    if generate:
-        # Pick random questions from the selected pool
-        pool = data.get(chapter, {}).get(level, [{"q": "Coming soon...", "a": "N/A", "sol": "Work in progress."}])
-        st.session_state.current_questions = random.sample(pool * 5, 5) # Multiplying to ensure 5 exist for demo
-        st.session_state.submitted = False
+    # --- Updated Logic to Fix the ValueError ---
+if generate:
+    # 1. Get the pool for the selected chapter/level
+    pool = data.get(chapter, {}).get(level, [])
+    
+    # 2. SAFETY CHECK:
+    if len(pool) == 0:
+        # If the list is empty, show a placeholder
+        st.session_state.current_questions = [{"q": "Wizard is still writing these questions! Stay tuned.", "a": "N/A", "sol": "Check back soon."}]
+        st.warning("This specific level is currently empty. Try another difficulty!")
+    elif len(pool) < 5:
+        # If you have 1 to 4 questions, show all of them (don't try to pick 5)
+        st.session_state.current_questions = pool
+    else:
+        # If you have 5 or more, pick 5 random ones
+        st.session_state.current_questions = random.sample(pool, 5)
+    
+    st.session_state.submitted = False
 
     st.info(f"Practicing: **{chapter}** | Level: **{level}**")
     
@@ -77,3 +90,4 @@ if generate or 'current_questions' in st.session_state:
             st.balloons()
 
             st.success("Great job! You're mastering this topic.")
+
