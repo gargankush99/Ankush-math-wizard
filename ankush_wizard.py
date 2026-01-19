@@ -19,7 +19,16 @@ st.subheader("Grade 12 CBSE Board Practice Portal (2026 Pattern)")
 data = {
     "Relations & Functions": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
     "Inverse Trig Functions": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
-    "Matrices": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
+    "Matrices": {
+        "Expert": [
+            {"q": "If A is a square matrix such that $A^2 = A$, then find the value of $(I + A)^3 - 7A$.", "a": "I", "sol": "Expanding $(I+A)^3$: $I^3 + 3I^2A + 3IA^2 + A^3$. Since $A^2=A$, then $A^3 = A^2 \cdot A = A \cdot A = A$. The expression becomes $I + 3A + 3A + A - 7A = I + 7A - 7A = I$."},
+            {"q": "If A = [[cosθ, sinθ], [-sinθ, cosθ]], then prove by induction $A^n$ is [[cos nθ, sin nθ], [-sin nθ, cos nθ]]. What is $A^2$?", "a": "[[cos 2theta, sin 2theta], [-sin 2theta, cos 2theta]]", "sol": "By Matrix Multiplication: $A^2 = [[cosθ, sinθ], [-sinθ, cosθ]] \times [[cosθ, sinθ], [-sinθ, cosθ]]$. Using trig identities $cos^2θ - sin^2θ = cos2θ$ and $2sinθcosθ = sin2θ$."},
+            {"q": "Find the matrix X such that $X [[1, 2], [3, 4]] = [[-2, 1], [4, 7]]$.", "a": "[[-5.5, 1.5], [-2.5, 2.5]]", "sol": "Let $A = [[1, 2], [3, 4]]$. $X = B A^{-1}$. First find $|A| = 4-6 = -2$. $A^{-1} = -1/2 [[4, -2], [-3, 1]]$. Multiply $B$ by $A^{-1}$ to get X."},
+            {"q": "If A and B are symmetric matrices of the same order, then show that $AB - BA$ is a skew-symmetric matrix.", "a": "skew-symmetric", "sol": "Let $C = AB - BA$. $C' = (AB - BA)' = (AB)' - (BA)' = B'A' - A'B'$. Since A, B are symmetric, $A'=A, B'=B$. So $C' = BA - AB = -(AB - BA) = -C$. Hence skew-symmetric."},
+            {"q": "A trust fund has Rs 30,000 that must be invested in two different types of bonds. The first bond pays 5% interest per year, and the second bond pays 7%. Using matrix multiplication, determine how to divide Rs 30,000 among the two types of bonds if the trust fund must obtain an annual total interest of Rs 1800.", "a": "15000, 15000", "sol": "Let investment be $[x, 30000-x]$. Interest matrix is $[0.05, 0.07]^T$. $[x, 30000-x][0.05, 0.07]^T = [1800]$. $0.05x + 2100 - 0.07x = 1800 \implies -0.02x = -300 \implies x = 15000$."}
+        ],
+        "Easy": [], "Medium": [], "Hard": []
+    },
     "Determinants": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
     "Continuity & Differentiability": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
     "Applications of Derivatives": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
@@ -85,3 +94,4 @@ if 'current_questions' in st.session_state:
         else:
             st.balloons()
             st.success("Great job! You're mastering this topic.")
+
