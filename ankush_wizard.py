@@ -43,19 +43,16 @@ with st.sidebar:
 
 if generate or 'current_questions' in st.session_state:
 if generate:
-    # 1. Get the pool for the selected chapter/level
+    # This whole block is now indented 4 spaces
     pool = data.get(chapter, {}).get(level, [])
     
-    # 2. SAFETY CHECK:
     if len(pool) == 0:
-        # If the list is empty, show a placeholder
-        st.session_state.current_questions = [{"q": "Wizard is still writing these questions! Stay tuned.", "a": "N/A", "sol": "Check back soon."}]
-        st.warning("This specific level is currently empty. Try another difficulty!")
+        # This line is indented 8 spaces (4 for the first IF, 4 for the second)
+        st.session_state.current_questions = [{"q": "Wizard is still writing these!", "a": "N/A", "sol": "Check back soon."}]
+        st.warning("This specific level is currently empty.")
     elif len(pool) < 5:
-        # If you have 1 to 4 questions, show all of them (don't try to pick 5)
         st.session_state.current_questions = pool
     else:
-        # If you have 5 or more, pick 5 random ones
         st.session_state.current_questions = random.sample(pool, 5)
     
     st.session_state.submitted = False
@@ -89,5 +86,6 @@ if generate:
             st.balloons()
 
             st.success("Great job! You're mastering this topic.")
+
 
 
