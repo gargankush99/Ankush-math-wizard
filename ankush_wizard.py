@@ -4,7 +4,6 @@ import random
 # --- BRANDING & CONFIG ---
 st.set_page_config(page_title="Ankush Mathematics Wizard", page_icon="🧙‍♂️", layout="centered")
 
-# Custom CSS to make it look like a "Wizard" brand
 st.markdown("""
     <style>
     .main { background-color: #f0f2f6; }
@@ -17,8 +16,6 @@ st.title("🧙‍♂️ Ankush Mathematics Wizard")
 st.subheader("Grade 12 CBSE Board Practice Portal (2026 Pattern)")
 
 # --- QUESTION DATABASE ---
-# You can expand this list with 100s of questions
-# Updated data dictionary with all Grade 12 CBSE Chapters
 data = {
     "Relations & Functions": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
     "Inverse Trig Functions": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
@@ -34,6 +31,7 @@ data = {
     "Linear Programming": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
     "Probability": {"Easy": [], "Medium": [], "Hard": [], "Expert": []}
 }
+
 # --- APP LOGIC ---
 with st.sidebar:
     st.header("Wizard's Controls")
@@ -41,12 +39,11 @@ with st.sidebar:
     level = st.selectbox("Difficulty Level", ["Easy", "Medium", "Hard", "Expert"])
     generate = st.button("✨ Generate 5 New Questions")
 
+# Corrected Logic Block
 if generate:
-    # This whole block is now indented 4 spaces
     pool = data.get(chapter, {}).get(level, [])
     
     if len(pool) == 0:
-        # This line is indented 8 spaces (4 for the first IF, 4 for the second)
         st.session_state.current_questions = [{"q": "Wizard is still writing these!", "a": "N/A", "sol": "Check back soon."}]
         st.warning("This specific level is currently empty.")
     elif len(pool) < 5:
@@ -56,6 +53,8 @@ if generate:
     
     st.session_state.submitted = False
 
+# Display logic (This must be outside the 'if generate' block to stay visible)
+if 'current_questions' in st.session_state:
     st.info(f"Practicing: **{chapter}** | Level: **{level}**")
     
     user_inputs = []
@@ -70,22 +69,19 @@ if generate:
         score = 0
         st.write("---")
         for i, item in enumerate(st.session_state.current_questions):
-            if user_inputs[i].strip().lower() == item['a'].lower():
+            # Safe check if answer exists
+            correct_ans = item.get('a', "N/A")
+            if user_inputs[i].strip().lower() == correct_ans.lower():
                 st.success(f"Q{i+1}: Correct!")
                 score += 1
             else:
                 st.error(f"Q{i+1}: Incorrect. Your answer: {user_inputs[i]}")
                 with st.expander(f"View Step-by-Step Solution for Q{i+1}"):
-                    st.latex(item['sol'])
+                    st.latex(item.get('sol', "Solution not available yet."))
         
-        st.subheader(f"Total Score: {score}/5")
+        st.subheader(f"Total Score: {score}/{len(st.session_state.current_questions)}")
         if score < 3:
-            st.warning(f"Wizard's Advice: You need to strengthen your fundamentals in **{chapter}**. Focus on NCERT Exemplar problems.")
+            st.warning(f"Wizard's Advice: You need to strengthen your fundamentals in **{chapter}**.")
         else:
             st.balloons()
-
             st.success("Great job! You're mastering this topic.")
-
-
-
-
