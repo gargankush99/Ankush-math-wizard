@@ -17,7 +17,36 @@ st.subheader("Grade 12 CBSE Board Practice Portal (2026 Pattern)")
 
 # --- QUESTION DATABASE ---
 data = {
-    "Relations & Functions": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
+    "Relations & Functions": {
+        "Easy": [
+            {"q": "If $n(A) = 3$, how many reflexive relations can be defined on $A$?", "a": "64", "sol": "Formula: $2^{n^2 - n}$. For $n=3$, $2^{9-3} = 2^6 = 64$."},
+            {"q": "Check if the relation $R = \{(1,2), (2,1)\}$ on set $\{1,2,3\}$ is transitive.", "a": "No", "sol": "For transitivity, if $(1,2) \in R$ and $(2,1) \in R$, then $(1,1)$ must be in $R$. Since $(1,1) \notin R$, it is not transitive."},
+            {"q": "Define a void relation.", "a": "Empty set", "sol": "A relation $R$ on set $A$ is void if no element of $A$ is related to any element of $A$, i.e., $R = \emptyset$."},
+            {"q": "Is the identity relation on a non-empty set symmetric?", "a": "Yes", "sol": "In an identity relation, $(a,a) \in R$ for all $a$. If $(a,b) \in R$, then $a=b$, so $(b,a)$ is also in $R$."},
+            {"q": "What is the range of a constant function $f(x) = k$?", "a": "{k}", "sol": "A constant function maps every input to the same single output value $k$."}
+        ],
+        "Medium": [
+            {"q": "Let $f: R \rightarrow R$ be defined by $f(x) = 3x$. Is $f$ onto?", "a": "Yes", "sol": "For any $y \in R$, let $3x = y \implies x = y/3$. Since $y/3$ is always a real number, every $y$ has a pre-image. Thus, it is onto."},
+            {"q": "If $f(x) = x+7$ and $g(x) = x-7$, find $fog(x)$.", "a": "x", "sol": "$f(g(x)) = f(x-7) = (x-7) + 7 = x$."},
+            {"q": "Find the number of binary operations on a set with 2 elements.", "a": "16", "sol": "Formula: $n^{n^2}$. For $n=2$, $2^{2^2} = 2^4 = 16$."},
+            {"q": "Is $f(x) = |x|$ a one-one function from $R \rightarrow R$?", "a": "No", "sol": "$f(1) = 1$ and $f(-1) = 1$. Since different inputs give the same output, it is not one-one."},
+            {"q": "Let $R$ be a relation in $N$ given by $R = \{(a,b) : a = b-2, b > 6\}$. Is $(2,4) \in R$?", "a": "No", "sol": "Although $2 = 4-2$, the condition $b > 6$ is not met since $b=4$."}
+        ],
+        "Hard": [
+            {"q": "Let $L$ be the set of all lines in a plane and $R$ be the relation 'is perpendicular to'. Is $R$ transitive?", "a": "No", "sol": "If $L_1 \perp L_2$ and $L_2 \perp L_3$, then $L_1$ is parallel to $L_3$, not perpendicular. So it's not transitive."},
+            {"q": "Show that the signum function $f: R \rightarrow R$ is neither one-one nor onto.", "a": "Not one-one", "sol": "$f(1)=1$ and $f(2)=1$, so not one-one. Range is $\{-1, 0, 1\}$, which is not equal to Codomain $R$, so not onto."},
+            {"q": "Let $A = \{1,2,3\}$. Find the number of equivalence relations containing $(1,2)$ and $(2,1)$.", "a": "2", "sol": "Smallest is $\{(1,1),(2,2),(3,3),(1,2),(2,1)\}$. Largest is the universal relation $A \times A$."},
+            {"q": "Check the injectivity of $f(n) = n^2$ where $f: N \rightarrow N$.", "a": "Injective", "sol": "Since $n_1, n_2$ are natural numbers, $n_1^2 = n_2^2$ always implies $n_1 = n_2$."},
+            {"q": "If $R = \{(a,b) : a \le b^2\}$, is $R$ reflexive?", "a": "No", "sol": "For $a=1/2$, $(1/2)^2 = 1/4$. $1/2 \le 1/4$ is false. So $(1/2, 1/2) \notin R$."}
+        ],
+        "Expert": [
+            {"q": "Let $A = R - \{3\}$ and $B = R - \{1\}$. $f: A \rightarrow B$ is $f(x) = (x-2)/(x-3)$. Is $f$ bijective?", "a": "Yes", "sol": "Check one-one: $f(x_1)=f(x_2)$ leads to $x_1=x_2$. Check onto: $y = (x-2)/(x-3) \implies x = (3y-2)/(y-1)$. Since $y \ne 1$, $x$ is always defined in $A$."},
+            {"q": "Number of onto functions from $\{1,2,...,n\}$ to $\{a,b\}$ is?", "a": "2^n - 2", "sol": "Total functions are $2^n$. Two functions are not onto (where all map to $a$ or all map to $b$). Hence $2^n - 2$."},
+            {"q": "Determine if $R = \{(x,y) : x-y \text{ is an integer}\}$ is an equivalence relation on $R$.", "a": "Yes", "sol": "Reflexive ($x-x=0$), Symmetric ($x-y \in Z \implies y-x \in Z$), and Transitive ($x-y+y-z = x-z \in Z$)."},
+            {"q": "Find total number of equivalence relations on $\{1,2,3\}$.", "a": "5", "sol": "These correspond to Partitions of the set: {1,2,3}, {{1},{2,3}}, {{2},{1,3}}, {{3},{1,2}}, {{1},{2},{3}}."},
+            {"q": "Let $f(x) = [x]$ be the greatest integer function. Is it onto $R \rightarrow R$?", "a": "No", "sol": "The range of $f$ is the set of integers $Z$. Since the codomain is $R$ and $Z \ne R$ (e.g., $0.5$ has no pre-image), it is not onto."}
+        ]
+    },
     "Inverse Trig Functions": {"Easy": [], "Medium": [], "Hard": [], "Expert": []},
     "Matrices": {
         "Expert": [
@@ -94,4 +123,5 @@ if 'current_questions' in st.session_state:
         else:
             st.balloons()
             st.success("Great job! You're mastering this topic.")
+
 
