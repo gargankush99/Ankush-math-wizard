@@ -41,7 +41,6 @@ with st.sidebar:
     level = st.selectbox("Difficulty Level", ["Easy", "Medium", "Hard", "Expert"])
     generate = st.button("✨ Generate 5 New Questions")
 
-if generate or 'current_questions' in st.session_state:
 if generate:
     # This whole block is now indented 4 spaces
     pool = data.get(chapter, {}).get(level, [])
@@ -86,6 +85,7 @@ if generate:
             st.balloons()
 
             st.success("Great job! You're mastering this topic.")
+
 
 
 
